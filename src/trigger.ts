@@ -22,9 +22,9 @@ const deleteTrigger = () => {
   }
 };
 
-const setupTrigger = () => {
+const initTrigger = () => {
   deleteTrigger();
   setTrigger();
 };
 
-export { setupTrigger };
+export { initTrigger };
