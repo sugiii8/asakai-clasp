@@ -6,3 +6,8 @@
   version "1.0.48"
   resolved "https://registry.yarnpkg.com/@types/google-apps-script/-/google-apps-script-1.0.48.tgz#ee62da0796148397c3d6508e3b7d54e8251c8261"
   integrity sha512-DgM4y8E2LfHHPn+jeb/sXpHMiYwyc6A3wlpFNjB/o5pvqsMNEYVLK2dHKJD0VYOqstbFt/cgCUUC8DB9p1pCAQ==
+
+"@types/google-spreadsheet@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@types/google-spreadsheet/-/google-spreadsheet-3.2.3.tgz#b88b0c7e0dc3f9d76eac586927f5becc3404ba12"
+  integrity sha512-Cwm+GfynAvatfOsqjRoEEAzewQgQQKjFj0WAxw/VgZZq8gb5s6bs7bQckpiLgfxH+uD7+YK09OVcOFpr0uPK6g==
