@@ -1,6 +1,6 @@
-import { getMembersOfEachTeam, getTopicAtRandom } from "./sheet";
-import { initTrigger } from "./trigger";
-import { slack } from "./slack";
+import { getMembersOfEachTeam, getTopicAtRandom } from "./modules/sheet";
+import { initTrigger } from "./modules/trigger";
+import { slack } from "./modules/slack";
 
 function main() {
   // タイマーセット
