@@ -1,6 +1,6 @@
-const SHEET_ID_MEMBERS = ""; // TODO ENV
-const SHEET_ID_TOPIC = ""; // TODO ENV
-const SHEET_DATA_RANGE = "A:A";
+const SHEET_ID_MEMBERS = process.env["SHEET_ID_MEMBERS"]!;
+const SHEET_ID_TOPIC = process.env["SHEET_ID_TOPICS"]!;
+const SHEET_DATA_RANGE = "A:A"; // A列にデータ入れてる
 const TEAM_NUMBER = 2; // 現在２チームに分かれて朝回
 
 type Members = Array<string>;

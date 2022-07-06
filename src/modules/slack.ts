@@ -1,5 +1,5 @@
 const slack = (message) => {
-  const slackWebhookURL = ""; // TODO ENV
+  const slackWebhookURL = process.env["SLACK_WEBHOOK_URL"]!;
 
   UrlFetchApp.fetch(slackWebhookURL, {
     method: "post",
