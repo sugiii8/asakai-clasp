@@ -1,5 +1,7 @@
+import { getEnv } from "./util";
+
 const slack = (message) => {
-  const slackWebhookURL = process.env["SLACK_WEBHOOK_URL"]!;
+  const slackWebhookURL = getEnv("SLACK_WEBHOOK_URL");
 
   UrlFetchApp.fetch(slackWebhookURL, {
     method: "post",
