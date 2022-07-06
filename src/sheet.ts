@@ -3,10 +3,10 @@ const SHEET_ID_TOPIC = ""; // TODO ENV
 const SHEET_DATA_RANGE = "A:A";
 const TEAM_NUMBER = 2; // 現在２チームに分かれて朝回
 
-type members = Array<string>;
-type membersOfEachTeam = {
-  a: members;
-  b: members;
+type Members = Array<string>;
+type MembersOfEachTeam = {
+  a: Members;
+  b: Members;
 };
 
 // memberをマスタシートから取得
@@ -32,7 +32,7 @@ const getMembersOfEachTeam = () => {
 };
 
 // 破壊的シャッフル
-const shuffle = (members: members) => {
+const shuffle = (members: Members) => {
   for (var i = shuffle.length - 1; i > 0; i--) {
     var r = Math.floor(Math.random() * (i + 1));
     var tmp = shuffle[i];
@@ -41,7 +41,7 @@ const shuffle = (members: members) => {
   }
 };
 
-const splitByTeam = (members: members): membersOfEachTeam => {
+const splitByTeam = (members: Members): MembersOfEachTeam => {
   const half = Math.ceil(members.length / TEAM_NUMBER);
   const a = members.splice(0, half);
   const b = members.splice(-half);
