@@ -6,23 +6,9 @@ const SHEET_DATA_RANGE = "A:A"; // A列にデータ入れてる
 const TEAM_NUMBER = 2; // 現在２チームに分かれて朝回
 
 type Members = Array<string>;
-type MembersOfEachTeam = {
+export type MembersOfEachTeam = {
   a: Members;
   b: Members;
-};
-
-// memberをマスタシートから取得
-const getDataFromSheet = (sheetId: string, range: string) => {
-  const sheet = SpreadsheetApp.openById(sheetId);
-  const data = sheet.getRange(range).getValues().filter(String).flat();
-  return data;
-};
-
-const getTopicAtRandom = () => {
-  const topics = getDataFromSheet(SHEET_ID_TOPIC, SHEET_DATA_RANGE);
-  const topic = topics[Math.floor(Math.random() * topics.length)];
-
-  return topic;
 };
 
 const getMembersOfEachTeam = () => {
@@ -33,13 +19,25 @@ const getMembersOfEachTeam = () => {
   return membersEachTeam;
 };
 
-// 破壊的シャッフル
-const shuffle = (members: Members) => {
-  for (var i = shuffle.length - 1; i > 0; i--) {
+const getTopicAtRandom = (): string => {
+  const topics = getDataFromSheet(SHEET_ID_TOPIC, SHEET_DATA_RANGE);
+  const topic = topics[Math.floor(Math.random() * topics.length)];
+
+  return topic;
+};
+
+const getDataFromSheet = (sheetId: string, range: string): Array<string> => {
+  const sheet = SpreadsheetApp.openById(sheetId);
+  const data = sheet.getRange(range).getValues().filter(String).flat();
+  return data;
+};
+
+const shuffle = (members: Members): void => {
+  for (var i = members.length - 1; i > 0; i--) {
     var r = Math.floor(Math.random() * (i + 1));
-    var tmp = shuffle[i];
-    shuffle[i] = shuffle[r];
-    shuffle[r] = tmp;
+    var tmp = members[i];
+    members[i] = members[r];
+    members[r] = tmp;
   }
 };
 
@@ -55,4 +53,4 @@ const splitByTeam = (members: Members): MembersOfEachTeam => {
   return membersOfEachTeam;
 };
 
-export { getMembersOfEachTeam, getTopicAtRandom };
+export { getTopicAtRandom, getMembersOfEachTeam };

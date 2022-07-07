@@ -1,6 +1,6 @@
 import { getEnv } from "./util";
 
-const slack = (message) => {
+const sendToSlack = (message: string) => {
   const slackWebhookURL = getEnv("SLACK_WEBHOOK_URL");
 
   UrlFetchApp.fetch(slackWebhookURL, {
@@ -11,4 +11,4 @@ const slack = (message) => {
   });
 };
 
-export { slack };
+export { sendToSlack };

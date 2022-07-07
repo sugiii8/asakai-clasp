@@ -7,4 +7,4 @@ const getEnv = (key: string) => {
   return value;
 };
 
-export { getEnv, timeLog };
+export { timeLog, getEnv };
