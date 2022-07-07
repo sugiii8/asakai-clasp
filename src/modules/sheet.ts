@@ -20,7 +20,7 @@ const getMembersOfEachTeam = () => {
 };
 
 const getTopicAtRandom = (): string => {
-  const topics = sheetData(SPREAD_SHEET_ID, "topic", SHEET_DATA_RANGE);
+  const topics = sheetData(SPREAD_SHEET_ID, "topics", SHEET_DATA_RANGE);
   const topic = topics[Math.floor(Math.random() * topics.length)];
 
   return topic;
@@ -40,8 +40,13 @@ const getExtraContent = () => {
 };
 
 const sheetData = (spreadSheetId: string, sheetName: string, range: string): Array<string> => {
-  const sheet = SpreadsheetApp.openById(spreadSheetId);
-  sheet.getSheetByName(sheetName);
+  const spreadSheet = SpreadsheetApp.openById(spreadSheetId);
+  const sheet = spreadSheet.getSheetByName(sheetName);
+  if (!sheet) {
+    console.error("該当のsheetがありません");
+    throw Error;
+  }
+
   const data = sheet.getRange(range).getValues().filter(String).flat();
   return data;
 };
