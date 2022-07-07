@@ -1,5 +1,10 @@
-# claspに反映
+# ローカルで webpack コンパイルした上で clasp push している
 
-```bash
-$ clasp push
+```
+  "scripts": {
+    "test": "jest",
+    "build": "webpack",
+    "push": "npm run build && clasp push",
+    "open": "clasp open"
+  },
 ```
