@@ -29,7 +29,7 @@ const makeTodoMessage = (topic: string, extra: string | null): string => {
   return todo;
 };
 
-const mekeRoomMessage = (teamMembers: MembersOfEachTeam) => {
+const mekeRoomMessage = (teamMembers: MembersOfEachTeam): string => {
   const teamA = teamMembers["a"];
   const teamB = teamMembers["b"];
   const message = `
@@ -39,6 +39,8 @@ const mekeRoomMessage = (teamMembers: MembersOfEachTeam) => {
     [Around アンゴラ](${roomB})\n
     ${teamB.join("\n")}
   `;
+
+  return message;
 };
 
 export { getMessage };
