@@ -1,9 +1,5 @@
 import { initTrigger } from "./trigger";
-import {
-  getExtraContent,
-  getMembersOfEachTeam,
-  getTopicAtRandom,
-} from "./sheet";
+import { getExtraContent, getMembersOfEachTeam, getTopicAtRandom } from "./sheet";
 import { timeLog } from "./util";
 import { sendToSlack } from "./slack";
 import { getMessage } from "./message";

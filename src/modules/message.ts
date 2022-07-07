@@ -4,11 +4,7 @@ import { getEnv } from "./util";
 const roomA = getEnv("ROOM_A");
 const roomB = getEnv("ROOM_B");
 
-const getMessage = (
-  topic: string,
-  teamMembers: MembersOfEachTeam,
-  extra: string | null
-): string => {
+const getMessage = (topic: string, teamMembers: MembersOfEachTeam, extra: string | null): string => {
   const todoMessage = makeTodoMessage(topic, extra);
   const roomMassage = mekeRoomMessage(teamMembers);
 
