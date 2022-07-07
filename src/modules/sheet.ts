@@ -14,7 +14,7 @@ export type MembersOfEachTeam = {
 };
 
 const getMembersOfEachTeam = () => {
-  const members = getDataFromSheet(SHEET_ID_MEMBERS, SHEET_DATA_RANGE);
+  const members = sheetData(SHEET_ID_MEMBERS, SHEET_DATA_RANGE);
   shuffle(members);
   const membersEachTeam = splitByTeam(members);
 
@@ -22,7 +22,7 @@ const getMembersOfEachTeam = () => {
 };
 
 const getTopicAtRandom = (): string => {
-  const topics = getDataFromSheet(SHEET_ID_TOPICS, SHEET_DATA_RANGE);
+  const topics = sheetData(SHEET_ID_TOPICS, SHEET_DATA_RANGE);
   const topic = topics[Math.floor(Math.random() * topics.length)];
 
   return topic;
@@ -35,13 +35,13 @@ const getExtraContent = () => {
     return null;
   }
 
-  const extras = getDataFromSheet(SHEET_ID_EXTRAS, SHEET_DATA_RANGE);
+  const extras = sheetData(SHEET_ID_EXTRAS, SHEET_DATA_RANGE);
   const extra = extras[Math.floor(Math.random() * extras.length)];
 
   return extra;
 };
 
-const getDataFromSheet = (sheetId: string, range: string): Array<string> => {
+const sheetData = (sheetId: string, range: string): Array<string> => {
   const sheet = SpreadsheetApp.openById(sheetId);
   const data = sheet.getRange(range).getValues().filter(String).flat();
   return data;
