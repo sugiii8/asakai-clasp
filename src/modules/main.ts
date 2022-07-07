@@ -3,11 +3,14 @@ import { getMembersOfEachTeam, getTopicAtRandom } from "./sheet";
 import { timeLog } from "./util";
 import { sendToSlack } from "./slack";
 
-export const main = () => {
-  timeLog();
-
-  // タイマーセット
+// NOTE:
+// app scriptのトリガーだと細かい時間が設定できないため、app scriptのトリガーで09:45に実行するトリガーを設定する
+const timerMain = () => {
   initTrigger();
+};
+
+const main = () => {
+  timeLog();
 
   // お題選定
   const topic = getTopicAtRandom();
@@ -23,3 +26,5 @@ export const main = () => {
 
   timeLog();
 };
+
+export { timerMain, main };
