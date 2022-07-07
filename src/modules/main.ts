@@ -1,7 +1,12 @@
 import { initTrigger } from "./trigger";
-import { getMembersOfEachTeam, getTopicAtRandom } from "./sheet";
+import {
+  getExtraContent,
+  getMembersOfEachTeam,
+  getTopicAtRandom,
+} from "./sheet";
 import { timeLog } from "./util";
 import { sendToSlack } from "./slack";
+import { getMessage } from "./message";
 
 // NOTE:
 // app scriptのトリガーだと細かい時間が設定できないため、app scriptのトリガーで09:45に実行するトリガーを設定する
@@ -9,6 +14,7 @@ const timerMain = () => {
   initTrigger();
 };
 
+// initTriggerで実行する関数
 const main = () => {
   timeLog();
 
@@ -17,11 +23,17 @@ const main = () => {
   Logger.log(topic);
 
   // チームメンバー取得
-  const teams = getMembersOfEachTeam();
-  Logger.log(teams);
+  const teamMembers = getMembersOfEachTeam();
+  Logger.log(teamMembers);
+
+  // 特別コンテンツ
+  const extra = getExtraContent();
+  Logger.log(extra);
+
+  // メッセージ
+  const message = getMessage(topic, teamMembers, extra);
 
   // slack
-  const message = "TEST"; // TODO TEST
   sendToSlack(message);
 
   timeLog();

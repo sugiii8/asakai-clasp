@@ -1,9 +1,11 @@
 import { getEnv } from "./util";
 
 const SHEET_ID_MEMBERS = getEnv("SHEET_ID_MEMBERS");
-const SHEET_ID_TOPIC = getEnv("SHEET_ID_TOPICS");
+const SHEET_ID_TOPICS = getEnv("SHEET_ID_TOPICS");
+const SHEET_ID_EXTRAS = getEnv("SHEET_ID_EXTRAS");
 const SHEET_DATA_RANGE = "A:A"; // A列にデータ入れてる
 const TEAM_NUMBER = 2; // 現在２チームに分かれて朝回
+const EXTRA_ATARI_RARITY = 5; // 5%の確率でextraやる
 
 type Members = Array<string>;
 export type MembersOfEachTeam = {
@@ -20,10 +22,23 @@ const getMembersOfEachTeam = () => {
 };
 
 const getTopicAtRandom = (): string => {
-  const topics = getDataFromSheet(SHEET_ID_TOPIC, SHEET_DATA_RANGE);
+  const topics = getDataFromSheet(SHEET_ID_TOPICS, SHEET_DATA_RANGE);
   const topic = topics[Math.floor(Math.random() * topics.length)];
 
   return topic;
+};
+
+const getExtraContent = () => {
+  // 20回のうち1回くらい特別コンテンツをやる
+  const number = Math.floor(Math.random() * 100);
+  if (number > EXTRA_ATARI_RARITY) {
+    return null;
+  }
+
+  const extras = getDataFromSheet(SHEET_ID_EXTRAS, SHEET_DATA_RANGE);
+  const extra = extras[Math.floor(Math.random() * extras.length)];
+
+  return extra;
 };
 
 const getDataFromSheet = (sheetId: string, range: string): Array<string> => {
@@ -53,4 +68,4 @@ const splitByTeam = (members: Members): MembersOfEachTeam => {
   return membersOfEachTeam;
 };
 
-export { getTopicAtRandom, getMembersOfEachTeam };
+export { getTopicAtRandom, getMembersOfEachTeam, getExtraContent };

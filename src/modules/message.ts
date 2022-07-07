@@ -6,14 +6,43 @@ const roomB = getEnv("ROOM_B");
 
 const getMessage = (
   topic: string,
-  members: MembersOfEachTeam,
-  extra?: string
-) => {
-  const message = extra
-    ? makeExtraMessage(extra)
-    : makeGeneralMessage(topic, members);
+  teamMembers: MembersOfEachTeam,
+  extra: string | null
+): string => {
+  const todoMessage = makeTodoMessage(topic, extra);
+  const roomMassage = mekeRoomMessage(teamMembers);
+
+  const message = `
+    <!here> 朝会\n
+    ${todoMessage}\n
+    ${roomMassage}\n
+  `;
+  return message;
 };
 
-const makeExtraMessage = (extra: string) => {};
+const makeTodoMessage = (topic: string, extra: string | null): string => {
+  const todo = extra
+    ? `
+    特別コンテンツ\n
+    ${extra}`
+    : `
+    今日のお題は\n
+    ${topic}
+  `;
 
-const makeGeneralMessage = (topic: string, members: MembersOfEachTeam) => {};
+  return todo;
+};
+
+const mekeRoomMessage = (teamMembers: MembersOfEachTeam) => {
+  const teamA = teamMembers["a"];
+  const teamB = teamMembers["b"];
+  const message = `
+    [Around ウール](${roomA})\n
+    ${teamA.join("\n")}
+    \n
+    [Around アンゴラ](${roomB})\n
+    ${teamB.join("\n")}
+  `;
+};
+
+export { getMessage };
