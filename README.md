@@ -25,3 +25,13 @@
     "open": "clasp open"
   },
 ```
+
+## .clasp.json
+
+```
+{
+  "scriptId": {YOUR_SCRIPT_ID},
+  "rootDir": "./dist"
+}
+
+```
