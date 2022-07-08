@@ -13,6 +13,7 @@ test("通常メッセージ", () => {
   const noExtra = null;
   const message = getMessage(topic, teamMembers, noExtra);
   expect(message).toContain("今日のお題は");
+  expect(message).toContain(topic);
   expect(message).toContain(teamMembers["a"][0]);
   expect(message).toContain(teamMembers["b"][0]);
   expect(message).not.toContain("特別コンテンツ");
@@ -25,4 +26,5 @@ test("特別コンテンツ", () => {
   expect(message).toContain(teamMembers["a"][0]);
   expect(message).toContain(teamMembers["b"][0]);
   expect(message).not.toContain("今日のお題は");
+  expect(message).not.toContain(topic);
 });
