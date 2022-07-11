@@ -23,7 +23,7 @@ const makeTodoMessage = (topic: string, extra: string | null): string => {
 *${extra}*`
     : `
 今日のお題は...
-*${topic}*`;
+【 *${topic}* 】`;
 
   return todo;
 };
