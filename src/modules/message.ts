@@ -22,7 +22,7 @@ const makeTodoMessage = (topic: string, extra: string | null): string => {
 特別コンテンツ！
 【 *${extra}* 】`
     : `
-今日のお題は...
+今日のお題(話すことがない人用)
 【 *${topic}* 】`;
 
   return todo;
