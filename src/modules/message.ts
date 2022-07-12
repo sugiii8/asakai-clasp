@@ -6,7 +6,7 @@ const roomB = getEnv("ROOM_B");
 
 const getMessage = (topic: string, teamMembers: MembersOfEachTeam, extra: string | null): string => {
   const todoMessage = makeTodoMessage(topic, extra);
-  const roomMassage = mekeRoomMessage(teamMembers);
+  const roomMassage = extra ? "" : mekeRoomMessage(teamMembers); // 特別コンテンツのときは全員同じ部屋で行う
 
   const message = `
   <!here> 朝会
@@ -20,7 +20,7 @@ const makeTodoMessage = (topic: string, extra: string | null): string => {
   const todo = extra
     ? `
 特別コンテンツ！
-*${extra}*`
+【 *${extra}* 】`
     : `
 今日のお題は...
 【 *${topic}* 】`;
