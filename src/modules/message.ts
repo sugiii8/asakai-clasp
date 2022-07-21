@@ -20,7 +20,8 @@ const makeTodoMessage = (topic: string, extra: string | null): string => {
   const todo = extra
     ? `
 特別コンテンツ！
-【 *${extra}* 】`
+【 ${extra} 】
+<${roomA}|Aroundウール>`
     : `
 今日のお題(話すことがない人用)
 【 *${topic}* 】`;
