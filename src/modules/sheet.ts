@@ -3,7 +3,7 @@ import { getEnv } from "./util";
 const SPREAD_SHEET_ID = getEnv("SPREAD_SHEET_ID");
 const SHEET_DATA_RANGE = "A:A"; // A列にデータ入れてる
 const TEAM_NUMBER = 2; // 現在２チームに分かれて朝回
-const EXTRA_ATARI_RARITY = getEnv("EXTRA_ATARI_RARITY"); // extraコンテンツドロップ確率
+const EXTRA_ATARI_RARITY = Number(getEnv("EXTRA_ATARI_RARITY")); // extraコンテンツドロップ確率
 
 type Members = Array<string>;
 export type MembersOfEachTeam = {
