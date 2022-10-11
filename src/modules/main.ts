@@ -12,27 +12,33 @@ const timerMain = () => {
 
 // initTriggerで実行する関数
 const main = () => {
-  timeLog();
+  try {
+    timeLog();
 
-  // お題選定
-  const topic = getTopicAtRandom();
-  Logger.log(topic);
+    // お題選定
+    const topic = getTopicAtRandom();
+    Logger.log(topic);
 
-  // チームメンバー取得
-  const teamMembers = getMembersOfEachTeam();
-  Logger.log(teamMembers);
+    // チームメンバー取得
+    const teamMembers = getMembersOfEachTeam();
+    Logger.log(teamMembers);
 
-  // 特別コンテンツ
-  const extra = getExtraContent();
-  Logger.log(extra);
+    // 特別コンテンツ
+    const extra = getExtraContent();
+    Logger.log(extra);
 
-  // メッセージ
-  const message = getMessage(topic, teamMembers, extra);
+    // メッセージ
+    const message = getMessage(topic, teamMembers, extra);
 
-  // slack
-  sendToSlack(message);
+    // slack
+    sendToSlack(message);
 
-  timeLog();
+    timeLog();
+  } catch (error) {
+    if (error instanceof Error) {
+      sendToSlack(`error: ${error.message}`);
+    }
+  }
 };
 
 export { timerMain, main };
