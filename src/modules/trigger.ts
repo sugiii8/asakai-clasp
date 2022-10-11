@@ -1,3 +1,5 @@
+import { currentDate } from "./util";
+
 const mainFunctionName = "main";
 
 const initTrigger = () => {
@@ -17,9 +19,9 @@ const deleteTrigger = () => {
 };
 
 const setTrigger = () => {
-  const triggerDate = new Date();
+  const triggerDate = currentDate();
   const week = triggerDate.getDay();
-  if (week == 0 || week == 6) {
+  if (week === 0 || week === 6) {
     // holiday no working
     return;
   }
