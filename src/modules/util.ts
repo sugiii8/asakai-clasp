@@ -1,5 +1,11 @@
+import dayjs from "dayjs";
+import "dayjs/locale/ja";
+
+dayjs.locale("ja");
+
 const timeLog = () => {
-  Logger.log(new Date());
+  const today = dayjs();
+  Logger.log(today.toDate());
 };
 
 const getEnv = (key: string) => {
@@ -7,4 +13,8 @@ const getEnv = (key: string) => {
   return value;
 };
 
-export { timeLog, getEnv };
+const currentDate = () => {
+  return dayjs().toDate();
+};
+
+export { timeLog, getEnv, currentDate };
