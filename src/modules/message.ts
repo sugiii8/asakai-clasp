@@ -1,5 +1,5 @@
 import { MembersOfEachTeam } from "./sheet";
-import { getEnv } from "./util";
+import { getEnv, currentDate } from "./util";
 
 const roomA = getEnv("ROOM_A");
 const roomB = getEnv("ROOM_B");
@@ -17,6 +17,15 @@ const getMessage = (topic: string, teamMembers: MembersOfEachTeam, extra: string
 };
 
 const makeTodoMessage = (topic: string, extra: string | null): string => {
+  const week = currentDate().getDay();
+  if (week === 3) {
+    const clusterUrl = getEnv("CLUSTER_URL");
+    return `
+clusterでVR朝会です~
+${clusterUrl}
+`;
+  }
+
   const todo = extra
     ? `
 特別コンテンツ！
