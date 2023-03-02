@@ -18,6 +18,15 @@ const getMessage = (topic: string, teamMembers: MembersOfEachTeam, extra: string
 
 const makeTodoMessage = (topic: string, extra: string | null): string => {
   const week = currentDate().getDay();
+  if (week === 3) {
+    return `
+今日は水曜日の個人開発の日です！
+参加者はお題ではなく、今日やることを宣言。参加しない方はいつもどおりの朝会です。
+
+今日のお題(話すことがない人用)
+【 *${topic}* 】
+`;
+  }
   if (week === 4) {
     const clusterUrl = getEnv("CLUSTER_URL");
     return `
